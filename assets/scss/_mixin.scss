@@ -1,0 +1,92 @@
+@mixin buttonStyle($textColor, $borderColor, $textColorHover) {
+    padding: 12px 32px;
+    font-size: 0.85rem;
+    line-height: 1.33;
+    background-color: transparent;
+    font-weight: 400;
+    text-align: center;
+    border: 1px solid $borderColor;
+    color: $textColor;
+    cursor: pointer;
+    vertical-align: middle;
+    font-family: Source Sans Pro;
+    position: relative;
+    overflow: hidden;
+    z-index: 0;
+    text-transform: uppercase;
+    &::before {
+        content:' ';
+        display: block;
+        position: absolute;
+        top:100%;
+        bottom:0;
+        left:0;
+        right:0;
+        background: $borderColor;
+        transition: all 0.4s ease;
+        z-index: -1;
+    }
+    &:hover {
+        color: $textColorHover;
+        &::before {
+          top:0%;
+        }
+    }
+}
+
+@mixin cardTransition() {
+    position: relative;
+    overflow: hidden;
+    .card-desc p{
+        transition: all 0.35s ease-out;
+    }
+    .card-title {
+        transition: all 0.2s ease-out;
+        transition-delay: 0.3s;      // when done other transition
+    }
+    &::before {
+        content: ' ';
+        position: absolute;
+        top: 100%;
+        bottom: 0;
+        left:0;
+        right:0;
+        background: map-get($color_pallets, 'cardHover');
+        opacity: 0.5;
+        transition: all 0.3s ease-out;
+    }
+    &:hover {
+        &::before {
+          top:0%;
+        }
+        .card-title {
+            visibility: hidden;
+            bottom: 3.5rem;
+            opacity: 0.2;
+            transition: none;   // transition been activ when hover out
+        }
+        .card-desc p{
+            bottom: 1rem;
+        }
+    }
+}
+
+@mixin for-desktop-down {
+    @media (max-width: 1199px) { @content; }
+}
+
+@mixin for-tablet-landscape-down {
+    @media (max-width: 991px) { @content; }
+}
+
+@mixin for-tablet-portrait-down {
+    @media (max-width: 767px) { @content; }
+}
+
+@mixin for-mobile-down {
+    @media (max-width: 575px) { @content; }
+}
+
+@mixin for-mobile-small-down {
+    @media (max-width: 480px) { @content; }
+}

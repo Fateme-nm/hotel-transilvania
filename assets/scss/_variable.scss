@@ -1,0 +1,41 @@
+$color_pallets: (
+    success: #1bd760, 
+    danger: #ff5600, 
+    warning: #f90, 
+    light: #f4f4f4,
+    muted: #333,
+    dark: #111118,
+    bg-input: #1F1F2C,
+    border-input: #1f1f2c,
+    btn-submit: #6fb586,
+    readMore-hover: #498f60,
+    bgCircleBnt: #d6d6d6,
+    circleBtn-hover: #869791,
+    new: #d9534f,
+    input: rgb(122, 122, 122),
+    book-button: #c5bc58,
+    border-bottom: #6fb586,
+    goToTop: rgba(0,0,0,0.7),
+    cardHover:#0a0a0a,
+    light-transparent: rgba(255, 255, 255, .3),
+    dark-transparent: rgba(0, 0, 0, .2),
+    dark-transparent-hover: rgba(0, 0, 0, 1)
+);
+$font-sizes: (
+    nav: 0.9rem
+);
+$font-family-base: 'serif';
+$font-size-base: 16px;
+$font-weight-base: 400;
+$line-height-base: 1.5;
+$body-color: #323232;
+$body-bg: map-get($color_pallets, 'light');
+$dt-font-weight: 400;
+$link-color: map-get($color_pallets, 'light');
+$link-hover-color: map-get($color_pallets, 'success');
+$link-decoration: none;
+$link-hover-decoration: none;
+$table-cell-padding: 7px;
+$table-bg: $body-bg;
+$text-muted: map-get($color_pallets, 'muted');
+$cursor-disabled: 'disabled';
