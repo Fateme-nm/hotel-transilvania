@@ -1,11 +1,8 @@
 $(document).ready(function() {
-    let menu = setInterval(()=> {   // set value for hamburger label
-        let labelMenu = $('body').innerWidth() <= 990 ? 'MENU' : 'EXTRA'
-        $('.hamburger').children('span').text(labelMenu)
-    })
-
+    handleHamburger()
+    
     let slideNumber = 1    // slide header number
-    $('.slide .slide-text.first').fadeIn(1000)    // fade in first slide
+    $('.slide .slide-text.first').fadeIn(1200)    // fade in first slide
     let sliderTopInterval = setInterval(sliderTop, 5000)
     $('.carousel-button').click(function() { // click on next or prev button
         clearInterval(sliderTopInterval)
@@ -38,12 +35,29 @@ $(document).ready(function() {
         $(`.${c}`).animate({width: '0'}, 200, () => $(this).removeClass(c))
     })
 
-    $('.hamburger .lines').click(function() {      // hamburger list display
-        $('.hamburger-list').css({display: 'block'})
-    })
-    $('.hamburger-list .close').click(function() {
-        $(this).parent().css({display: 'none'})
-    })
+    function handleHamburger() {
+        $('.hamburger .ham-btn').click(function() {       // hamburger list handel
+            $('.hamburger-list').css({display: 'block'})
+            $('.left-for-menu').css({position: 'relative', right: '20rem', left: 'auto'})
+        })
+        $('.hamburger-list .close').click(function() {
+            $(this).parent().css({display: 'none'})
+            $('.left-for-menu').css({right: '0', left: '0'})
+            $('header').css({position: 'absolute !important', top: '0', left: '0'})
+        })
+        let menu = setInterval(()=> {                   // set value for hamburger label
+            let labelMenu = $('body').innerWidth() <= 990 ? 'MENU' : 'EXTRA'
+            $('.hamburger').children('.ham-btn').children('span').text(labelMenu)
+            if (labelMenu === 'MENU') {
+                $('.first-ul').css({display: 'block'})
+                $('.first-border').css({display: 'block'})
+            }
+            else {
+                $('.first-ul').css({display: 'none'})
+                $('.first-border').css({display: 'none'})
+            }
+        })
+    }
 
     function sliderTop(button = false) {
         const size = $('.slide').eq(0).innerWidth()
@@ -62,13 +76,13 @@ $(document).ready(function() {
             }
         })
         $('.slide-text').css({top: '100%'})
-        $('.slide-text.first').css({top: '32%'}).fadeOut(1000)
+        $('.slide-text.first').css({top: '32%'}).fadeOut(1200)
         if (slideNumber === $('.slide').length - 1 || slideNumber === 1) {// fClone for next,orginal for prev 
-            $('.slide-text.first').fadeIn(1000)
+            $('.slide-text.first').fadeIn(1200)
         }
         else {
             let index = slideNumber === 0 ? $('.slide').length - 2 : slideNumber
-            $('.slide-text').eq(index).animate({top: '32%'}, 1000)
+            $('.slide-text').eq(index).animate({top: '32%'}, 1500)
         }
     }
 
