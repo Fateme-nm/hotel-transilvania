@@ -427,7 +427,10 @@ header #goToTop:hover span {
   align-items: center;
   margin-left: 0;
   width: fit-content;
-  margin-right: 1.2rem;
+  margin-right: 1rem;
+}
+.items .book-link.active {
+  margin-right: 5.5rem;
 }
 .items .book-link a {
   padding: 12px 32px;
@@ -478,13 +481,23 @@ header #goToTop:hover span {
 }
 
 .carousel-container {
-  width: fit-content;
+  width: 100%;
   height: fit-content;
   z-index: 0;
   overflow: hidden;
   position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
-.carousel-container .carousel-slide {
+.carousel-container .ul-container {
+  width: 100%;
+  height: fit-content;
+  overflow: hidden;
+}
+.carousel-container .ul-container .carousel-slide {
+  overflow: hidden;
+  width: fit-content;
   padding: 0;
   margin: 0;
   list-style: none;
@@ -492,7 +505,7 @@ header #goToTop:hover span {
   flex-wrap: nowrap;
   transform: translateX(-100vw);
 }
-.carousel-container .carousel-slide .slide {
+.carousel-container .ul-container .carousel-slide .slide {
   flex-basis: 100%;
   position: relative;
   width: 100vw;
@@ -501,21 +514,21 @@ header #goToTop:hover span {
   justify-content: center;
 }
 @media (max-width: 991px) {
-  .carousel-container .carousel-slide .slide {
+  .carousel-container .ul-container .carousel-slide .slide {
     height: 37rem;
   }
 }
 @media (max-width: 767px) {
-  .carousel-container .carousel-slide .slide {
+  .carousel-container .ul-container .carousel-slide .slide {
     height: 25rem;
   }
 }
 @media (max-width: 480px) {
-  .carousel-container .carousel-slide .slide {
+  .carousel-container .ul-container .carousel-slide .slide {
     height: 20rem;
   }
 }
-.carousel-container .carousel-slide .slide .slide-text {
+.carousel-container .ul-container .carousel-slide .slide .slide-text {
   font-family: Playfair Display;
   position: absolute;
   top: 32%;
@@ -524,47 +537,47 @@ header #goToTop:hover span {
   width: 60%;
 }
 @media (max-width: 1199px) {
-  .carousel-container .carousel-slide .slide .slide-text {
+  .carousel-container .ul-container .carousel-slide .slide .slide-text {
     width: 80%;
   }
 }
 @media (max-width: 575px) {
-  .carousel-container .carousel-slide .slide .slide-text {
+  .carousel-container .ul-container .carousel-slide .slide .slide-text {
     width: 90%;
   }
 }
-.carousel-container .carousel-slide .slide .slide-text.first {
+.carousel-container .ul-container .carousel-slide .slide .slide-text.first {
   display: none;
 }
-.carousel-container .carousel-slide .slide .slide-text .txt1 {
+.carousel-container .ul-container .carousel-slide .slide .slide-text .txt1 {
   font-size: 14px;
   letter-spacing: 4px;
   margin-bottom: 0.8rem;
 }
-.carousel-container .carousel-slide .slide .slide-text .txt2 {
+.carousel-container .ul-container .carousel-slide .slide .slide-text .txt2 {
   font-size: 5.5rem;
   font-weight: 700;
   line-height: 1em;
 }
 @media (max-width: 991px) {
-  .carousel-container .carousel-slide .slide .slide-text .txt2 {
+  .carousel-container .ul-container .carousel-slide .slide .slide-text .txt2 {
     font-size: 4rem;
   }
 }
 @media (max-width: 767px) {
-  .carousel-container .carousel-slide .slide .slide-text .txt2 {
+  .carousel-container .ul-container .carousel-slide .slide .slide-text .txt2 {
     font-size: 3rem;
   }
 }
 @media (max-width: 480px) {
-  .carousel-container .carousel-slide .slide .slide-text .txt2 {
+  .carousel-container .ul-container .carousel-slide .slide .slide-text .txt2 {
     font-size: 2.2rem;
   }
 }
-.carousel-container .carousel-slide .slide .slide-text .slide-btn {
+.carousel-container .ul-container .carousel-slide .slide .slide-text .slide-btn {
   margin-top: 1.8rem;
 }
-.carousel-container .carousel-slide .slide .slide-text .slide-btn a {
+.carousel-container .ul-container .carousel-slide .slide .slide-text .slide-btn a {
   padding: 12px 32px;
   font-size: 0.85rem;
   line-height: 1.33;
@@ -585,7 +598,7 @@ header #goToTop:hover span {
   font-size: 0.8rem;
   line-height: 1.5;
 }
-.carousel-container .carousel-slide .slide .slide-text .slide-btn a::before {
+.carousel-container .ul-container .carousel-slide .slide .slide-text .slide-btn a::before {
   content: " ";
   display: block;
   position: absolute;
@@ -597,13 +610,13 @@ header #goToTop:hover span {
   transition: all 0.4s ease;
   z-index: -1;
 }
-.carousel-container .carousel-slide .slide .slide-text .slide-btn a:hover {
+.carousel-container .ul-container .carousel-slide .slide .slide-text .slide-btn a:hover {
   color: #111118;
 }
-.carousel-container .carousel-slide .slide .slide-text .slide-btn a:hover::before {
+.carousel-container .ul-container .carousel-slide .slide .slide-text .slide-btn a:hover::before {
   top: 0%;
 }
-.carousel-container .carousel-slide .slide > img {
+.carousel-container .ul-container .carousel-slide .slide > img {
   display: block;
   width: 100%;
   height: 100%;
@@ -611,7 +624,7 @@ header #goToTop:hover span {
   object-position: center;
 }
 .carousel-container .buttons {
-  width: 100vw;
+  width: 100%;
   height: 100%;
   position: absolute;
   top: 0;
@@ -642,7 +655,7 @@ header #goToTop:hover span {
   left: 0;
 }
 .carousel-container .buttons .next {
-  left: calc(100vw - 3rem);
+  right: 0;
 }
 
 .hamburger {
@@ -657,17 +670,31 @@ header #goToTop:hover span {
 .hamburger .ham-btn {
   z-index: 100;
   display: flex;
+  position: relative;
+  transition: right 0.5s ease;
+}
+.hamburger .ham-btn.active {
+  position: fixed;
+  right: 13rem;
+  padding: 0.5rem 1rem;
+  background-color: #111118;
+  transition: right 0.5s ease;
 }
 .hamburger .hamburger-list {
   display: none;
   position: fixed;
   top: 0;
   bottom: 0;
-  right: 0;
+  left: 100%;
   width: 20rem;
   background-color: #111118;
   overflow-y: scroll;
   padding: 2rem;
+  padding-top: 5rem;
+}
+.hamburger .hamburger-list.active {
+  display: block;
+  left: calc(100% - 20rem);
 }
 .hamburger .hamburger-list .list-items {
   list-style: none;
@@ -732,25 +759,43 @@ header #goToTop:hover span {
   position: relative;
   margin-left: 1rem;
   margin-right: 0.5rem;
+  width: 1.2rem;
+  height: 1.4rem;
 }
 .lines .line {
-  top: 50%;
-}
-.lines .line, .lines .line::before, .lines .line::after {
-  width: 1.2rem;
+  position: absolute;
+  width: 100%;
   height: 1px;
   background-color: #f4f4f4;
-  position: absolute;
+  border-radius: 0.2px;
+  transition: all cubic-bezier(0.26, 0.1, 0.27, 1.55) 0.5ms;
+}
+.lines .top {
+  top: 18%;
+}
+.lines .middle {
+  top: 48%;
+}
+.lines .bottom {
+  top: 78%;
+}
+.lines.close .top {
+  transform: rotate(45deg);
+  top: 48%;
+}
+.lines.close .middle, .lines.close .bottom {
+  transform: rotate(-45deg);
+  top: 48%;
+}
+
+.left-for-menu {
+  position: relative;
+  right: 0;
   left: 0;
 }
-.lines .line::before {
-  content: "";
-  top: 0.35rem;
-}
-.lines .line::after {
-  content: "";
-  top: -0.35rem;
-  height: 1.5px;
+.left-for-menu.active {
+  right: 20rem;
+  left: auto;
 }
 
 .date {

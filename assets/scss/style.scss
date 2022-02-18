@@ -219,7 +219,10 @@ header {
         align-items: center;
         margin-left: 0;
         width: fit-content;
-        margin-right: 1.2rem;
+        margin-right: 1rem;
+        &.active {
+            margin-right: 5.5rem;
+        }
         a {
             @include buttonStyle(
             map-get($color_pallets, 'light'),
@@ -241,95 +244,105 @@ header {
 }
 
 .carousel-container {
-    width: fit-content;
+    width: 100%;
     height: fit-content;
     z-index: 0;
     overflow: hidden;
     position: relative;
-    .carousel-slide {
-        padding: 0;
-        margin: 0;
-        list-style: none;
-        display: flex;
-        flex-wrap: nowrap;
-        transform: translateX(-100vw);
-        .slide {
-            flex-basis: 100%;
-            position: relative;
-            width: 100vw;
-            height: 43rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    .ul-container {
+        width: 100%;
+        height: fit-content;
+        overflow: hidden;
+        .carousel-slide {
+            overflow: hidden;
+            width: fit-content;
+            padding: 0;
+            margin: 0;
+            list-style: none;
             display: flex;
-            justify-content: center;
-            @include for-tablet-landscape-down {
-                height: 37rem;
-            }
-            @include for-tablet-portrait-down {
-                height: 25rem;
-            }
-            @include for-mobile-small-down {
-                height: 20rem;
-            }
-            .slide-text {
-                font-family: Playfair Display;
-                position: absolute;
-                top: 32%;
-                color: #fff;
-                text-align: center;
-                width: 60%; 
-                @include for-desktop-down {
-                    width: 80%;
+            flex-wrap: nowrap;
+            transform: translateX(-100vw);
+            .slide {
+                flex-basis: 100%;
+                position: relative;
+                width: 100vw;
+                height: 43rem;
+                display: flex;
+                justify-content: center;
+                @include for-tablet-landscape-down {
+                    height: 37rem;
                 }
-                @include for-mobile-down {
-                    width: 90%;
+                @include for-tablet-portrait-down {
+                    height: 25rem;
                 }
-                &.first {
-                    display: none;
+                @include for-mobile-small-down {
+                    height: 20rem;
                 }
-                .txt1 {
-                    font-size: 14px;
-                    letter-spacing: 4px;
-                    margin-bottom: 0.8rem;
-                }
-                .txt2 {
-                    font-size: 5.5rem;
-                    font-weight: 700;
-                    line-height: 1em;
-                    @include for-tablet-landscape-down {
-                        font-size: 4rem;
+                .slide-text {
+                    font-family: Playfair Display;
+                    position: absolute;
+                    top: 32%;
+                    color: #fff;
+                    text-align: center;
+                    width: 60%; 
+                    @include for-desktop-down {
+                        width: 80%;
                     }
-                    @include for-tablet-portrait-down {
-                        font-size: 3rem;
+                    @include for-mobile-down {
+                        width: 90%;
                     }
-                    @include for-mobile-small-down {
-                        font-size: 2.2rem;
+                    &.first {
+                        display: none;
                     }
-                }
-                .slide-btn {
-                    margin-top: 1.8rem;
-                    a {
-                        @include buttonStyle(
-                        map-get($color_pallets , 'light'),
-                        map-get($color_pallets , 'light'),
-                        map-get($color_pallets, 'dark')
-                    );
-                    padding: 0.5rem 1rem;
-                    font-weight: 500;
-                    font-size: 0.8rem;
-                    line-height: 1.5;
+                    .txt1 {
+                        font-size: 14px;
+                        letter-spacing: 4px;
+                        margin-bottom: 0.8rem;
+                    }
+                    .txt2 {
+                        font-size: 5.5rem;
+                        font-weight: 700;
+                        line-height: 1em;
+                        @include for-tablet-landscape-down {
+                            font-size: 4rem;
+                        }
+                        @include for-tablet-portrait-down {
+                            font-size: 3rem;
+                        }
+                        @include for-mobile-small-down {
+                            font-size: 2.2rem;
+                        }
+                    }
+                    .slide-btn {
+                        margin-top: 1.8rem;
+                        a {
+                            @include buttonStyle(
+                            map-get($color_pallets , 'light'),
+                            map-get($color_pallets , 'light'),
+                            map-get($color_pallets, 'dark')
+                        );
+                        padding: 0.5rem 1rem;
+                        font-weight: 500;
+                        font-size: 0.8rem;
+                        line-height: 1.5;
+                        }
                     }
                 }
             }
-        }
-        .slide > img {
-            display: block;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            object-position: center;
+            .slide > img {
+                display: block;
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                object-position: center;
+            }
         }
     }
     .buttons {
-        width: 100vw;
+        width: 100%;
         height: 100%;
         position: absolute;
         top: 0;
@@ -357,8 +370,7 @@ header {
             left: 0;
         }
         .next {
-            left: calc(100vw - 3rem);
-            //right: 0;
+            right: 0;
         }
     }
 }
@@ -374,17 +386,31 @@ header {
     .ham-btn {
         z-index: 100;
         display: flex;
+        position: relative;
+        transition: right 0.5s ease;
+        &.active {
+            position: fixed;
+            right: 13rem;
+            padding: 0.5rem 1rem;
+            background-color: map-get($color_pallets, 'dark');
+            transition: right 0.5s ease;
+        }
     }
     .hamburger-list {
         display: none;
         position: fixed;
         top: 0;
         bottom: 0;
-        right: 0;
+        left: 100%;
         width: 20rem;
         background-color: map-get($color_pallets, 'dark');
         overflow-y: scroll;
         padding: 2rem;
+        padding-top: 5rem;
+        &.active {
+            display: block;
+            left: calc(100% - 20rem);
+        }
         .list-items {
             &.first-ul {
                 display: none;
@@ -450,24 +476,42 @@ header {
     position: relative;
     margin-left: 1rem;
     margin-right: 0.5rem;
+    width: 1.2rem;
+    height: 1.4rem;
     .line {
-        top: 50%;
-        &, &::before, &::after {
-            width: 1.2rem;
-            height: 1px;
-            background-color: map-get($color_pallets, 'light');
-            position: absolute;
-            left: 0;
-        }
-        &::before {
-            content: '';
-            top: 0.35rem;
-        }
-        &::after {
-            content: '';
-            top: -0.35rem;
-            height: 1.5px;
-        }
+        position: absolute;
+        width: 100%;
+        height: 1px;
+        background-color: map-get($color_pallets, 'light');
+        border-radius: 0.2px;
+        transition: all cubic-bezier(0.26, 0.1, 0.27, 1.55) 0.5ms;
+    }
+    .top {
+        top: 18%;
+    }
+    .middle {
+        top: 48%;
+    }
+    .bottom {
+        top: 78%;
+    }
+    &.close .top {
+        transform: rotate(45deg);
+        top: 48%;
+    }
+    &.close .middle, &.close .bottom {
+        transform: rotate(-45deg);
+        top: 48%;
+    }
+}
+
+.left-for-menu {
+    position: relative;
+    right: 0;
+    left: 0;
+    &.active {
+        right: 20rem;
+        left: auto;
     }
 }
 

@@ -37,13 +37,16 @@ $(document).ready(function() {
 
     function handleHamburger() {
         $('.hamburger .ham-btn').click(function() {       // hamburger list handel
-            $('.hamburger-list').css({display: 'block'})
-            $('.left-for-menu').css({position: 'relative', right: '20rem', left: 'auto'})
-        })
-        $('.hamburger-list .close').click(function() {
-            $(this).parent().css({display: 'none'})
-            $('.left-for-menu').css({right: '0', left: '0'})
-            $('header').css({position: 'absolute !important', top: '0', left: '0'})
+            $('.lines').toggleClass('close')
+            $('.ham-btn, .book-link, .hamburger-list, .left-for-menu').toggleClass('active')
+            // if ($('.lines').hasClass('close')) {
+            //     $('.hamburger-list').css({display: 'block'})
+            //     $('.left-for-menu').css({right: '20rem', left: 'auto'})
+            // }
+            // else {
+            //     $('.hamburger-list').css({display: 'none'})
+            //     $('.left-for-menu, header').css({right: '0', left: '0'})
+            // }
         })
         let menu = setInterval(()=> {                   // set value for hamburger label
             let labelMenu = $('body').innerWidth() <= 990 ? 'MENU' : 'EXTRA'
