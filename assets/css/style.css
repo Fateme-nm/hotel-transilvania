@@ -705,6 +705,9 @@ header #goToTop:hover span {
 .hamburger .hamburger-list .info {
   padding-top: 3rem;
 }
+.hamburger .hamburger-list .info .mail {
+  color: #6fb586;
+}
 
 .lines {
   position: relative;

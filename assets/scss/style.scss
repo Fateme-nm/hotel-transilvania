@@ -420,6 +420,9 @@ header {
         }
         .info {
             padding-top: 3rem;
+            .mail {
+                color: map-get($color_pallets, 'btn-submit');
+            }
         }
     }
 }
