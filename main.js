@@ -153,7 +153,7 @@ $(document).ready(function() {
                     const item_outDate = new Date(item.to).getTime()
                     let newClass = ''
                     if (selected_outDate > selected_inDate && selected_inDate >= item_inDate && selected_outDate <= item_outDate
-                        && selected_rooms <= item.room){
+                        && selected_rooms == item.bed){
                         newClass = 'class=allowed'
                     }
                     let newTr = `<tr ${newClass}>
