@@ -36,28 +36,18 @@ $(document).ready(function() {
     })
 
     function handleHamburger() {
-        $('.hamburger .ham-btn').click(function() {       // hamburger list handel
+        $('.hamburger .ham-btn').click(function() {     // open and close ham list handel
             $('.lines').toggleClass('close')
             $('.ham-btn, .book-link, .hamburger-list, .left-for-menu').toggleClass('active')
-            // if ($('.lines').hasClass('close')) {
-            //     $('.hamburger-list').css({display: 'block'})
-            //     $('.left-for-menu').css({right: '20rem', left: 'auto'})
-            // }
-            // else {
-            //     $('.hamburger-list').css({display: 'none'})
-            //     $('.left-for-menu, header').css({right: '0', left: '0'})
-            // }
         })
         let menu = setInterval(()=> {                   // set value for hamburger label
             let labelMenu = $('body').innerWidth() <= 990 ? 'MENU' : 'EXTRA'
             $('.hamburger').children('.ham-btn').children('span').text(labelMenu)
-            if (labelMenu === 'MENU') {
-                $('.first-ul').css({display: 'block'})
-                $('.first-border').css({display: 'block'})
+            if (labelMenu === 'MENU') {                 // show and hide nav-linke in ham
+                $('.first-ul, .first-border').css({display: 'block'})
             }
             else {
-                $('.first-ul').css({display: 'none'})
-                $('.first-border').css({display: 'none'})
+                $('.first-ul, .first-border').css({display: 'none'})
             }
         })
     }

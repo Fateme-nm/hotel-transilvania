@@ -671,30 +671,33 @@ header #goToTop:hover span {
   z-index: 100;
   display: flex;
   position: relative;
-  transition: right 0.5s ease;
+  right: 0;
+  transition: right 0.2s ease-out;
 }
 .hamburger .ham-btn.active {
   position: fixed;
-  right: 13rem;
   padding: 0.5rem 1rem;
+  right: 12rem;
   background-color: #111118;
-  transition: right 0.5s ease;
+  transition: all 0.5s ease-out;
 }
 .hamburger .hamburger-list {
-  display: none;
+  visibility: hidden;
   position: fixed;
   top: 0;
   bottom: 0;
-  left: 100%;
+  right: -20rem;
   width: 20rem;
   background-color: #111118;
   overflow-y: scroll;
   padding: 2rem;
   padding-top: 5rem;
+  transition: all 0.3s ease-out;
 }
 .hamburger .hamburger-list.active {
-  display: block;
-  left: calc(100% - 20rem);
+  visibility: visible;
+  right: 0;
+  transition: right 0.6s ease-out;
 }
 .hamburger .hamburger-list .list-items {
   list-style: none;
@@ -791,11 +794,13 @@ header #goToTop:hover span {
 .left-for-menu {
   position: relative;
   right: 0;
-  left: 0;
+  left: auto;
+  transition: all 0.3s ease-out;
 }
 .left-for-menu.active {
   right: 20rem;
   left: auto;
+  transition: all 0.6s ease-out;
 }
 
 .date {
