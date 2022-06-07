@@ -2,9 +2,9 @@ $(document).ready(function() {
     handleHamburger()
     
     let slideNumber = 1    // slide header number
-    $('.slide .slide-text.first').fadeIn(1200)    // fade in first slide
+    $('.slide .slide-text.first').fadeIn(1200)      // fade in first slide
     let sliderTopInterval = setInterval(sliderTop, 5000)
-    $('.carousel-button').click(function() { // click on next or prev button
+    $('.carousel-button').click(function() {        // click on next or prev button
         clearInterval(sliderTopInterval)
         sliderTop($(this))
         sliderTopInterval = setInterval(sliderTop, 5000)
@@ -20,7 +20,7 @@ $(document).ready(function() {
         sliderCmInterval = setInterval(sliderComments, 5000)
     })
 
-    $('.dateForm').submit(function(e) {   // submit date in, date out and number of room
+    $('.dateForm').submit(function(e) {             // submit date in, date out and number of room
         e.preventDefault()
         getDateInfo() 
     })
